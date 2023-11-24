@@ -16,16 +16,15 @@ class TaskDao {
   static const String _image = 'image';
 
   List<Task> toList(List<Map<String, dynamic>> mapasDetaraefas) {
-      print('Convertanedo to list');
-      final List<Task> tarefas = [];
-      for (Map<String, dynamic> linha in mapasDetaraefas) {
-        final Task tarefa =
-            Task(linha[_name], linha[_image], linha[_difficulty]);
-        tarefas.add(tarefa);
-      }
-      print('Lista de tarefas $tarefas');
-      return tarefas;
+    print('Convertanedo to list');
+    final List<Task> tarefas = [];
+    for (Map<String, dynamic> linha in mapasDetaraefas) {
+      final Task tarefa = Task(linha[_name], linha[_image], linha[_difficulty]);
+      tarefas.add(tarefa);
     }
+    print('Lista de tarefas $tarefas');
+    return tarefas;
+  }
 
   save(Task tarefa) {
     Future<List<Task>> findAll() async {
@@ -37,9 +36,14 @@ class TaskDao {
       return toList(result);
     }
 
-    
+    Future<List<Task>> find(String nameDaTarefa) async {
+      print('Acessando find: ');
+      final Database bancoDeDados = await getDatabase();
+      final List<Map<String, dynamic>> result = await bancoDeDados
+          .query(_tablename, where: '$_name = ?, whereArgs: [nomeDaTarefa]');
+      print('Tarefa econtrada: $toList(result)');
+    }
 
-    Future<List<Task>> find(String nameDaTarefa) async {}
     delete(String nomeDaTarefa) async {}
   }
 }
