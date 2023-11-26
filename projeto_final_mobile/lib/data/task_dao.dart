@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:js_util';
 import 'package:flutter/material.dart';
 import 'package:projeto_final_mobile/components/task.dart';
 import 'package:projeto_final_mobile/data/database.dart';
