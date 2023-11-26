@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_final_mobile/components/task.dart';
+import 'package:projeto_final_mobile/data/task_dao.dart';
 import 'package:projeto_final_mobile/data/task_inherited.dart';
 
 class FormScreen extends StatefulWidget {
@@ -24,7 +26,7 @@ class _FormScreenState extends State<FormScreen> {
     return false;
   }
 
- /* bool difficultyValidatr(String? value){
+  /* bool difficultyValidatr(String? value){
     if (value != null && value.isEmpty) {
       if (int.parse(value) > 5 || int.parse(value) < 1) {
         return true;
@@ -32,8 +34,6 @@ class _FormScreenState extends State<FormScreen> {
       return false;
     }
   }*/
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -151,6 +151,11 @@ class _FormScreenState extends State<FormScreen> {
                         // print(nameController.text);
                         // print(int.parse(difficultyController.text));
                         // print(imageController);
+                        TaskDao().save(Task(
+                            nameController.text,
+                            imageController.text,
+                            int.fromEnvironment(difficultyController.text),
+                            ));
                         TaskInherited.of(widget.taskContext).newTask(
                             nameController.text,
                             imageController.text,

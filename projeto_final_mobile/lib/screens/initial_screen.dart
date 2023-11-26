@@ -44,7 +44,7 @@ class _InitialScreenState extends State<InitialScreen> {
                 break;
 
               case ConnectionState.waiting:
-              return Center(
+                return Center(
                   child: Column(
                     children: [
                       CircularProgressIndicator(),
@@ -55,7 +55,7 @@ class _InitialScreenState extends State<InitialScreen> {
                 break;
 
               case ConnectionState.active:
-              return Center(
+                return Center(
                   child: Column(
                     children: [
                       CircularProgressIndicator(),
@@ -102,6 +102,12 @@ class _InitialScreenState extends State<InitialScreen> {
               builder: (contextNew) => FormScreen(
                 taskContext: context,
               ),
+            ),
+          ).then(
+            (value) => setState(
+              () {
+                print('Recarregando a tela inicial');
+              },
             ),
           );
         },
