@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final_mobile/data/task_inherited.dart';
 import 'package:projeto_final_mobile/screens/initial_screen.dart';
+import 'package:projeto_final_mobile/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: TaskInherited(child: const InitialScreen()),
+      home: LoginScreen() //TaskInherited(child: const InitialScreen()),
     );
   }
 }
