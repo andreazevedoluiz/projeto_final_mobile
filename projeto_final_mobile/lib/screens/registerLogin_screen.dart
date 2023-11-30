@@ -8,9 +8,9 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  TextEditingController nameController = TextEditingController();
-   TextEditingController emailController = TextEditingController();
-  TextEditingController password = TextEditingController();
+  TextEditingController nameRegisterController = TextEditingController();
+  TextEditingController emailRegisterController = TextEditingController();
+  TextEditingController passwordRegisterController = TextEditingController();
     bool _showPassaword = false;
 
 
@@ -54,7 +54,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return null;
                       },
                       keyboardType: TextInputType.name,
-                      controller: nameController,
+                      controller: nameRegisterController,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -75,7 +75,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return null;
                       },
                       keyboardType: TextInputType.emailAddress,
-                      controller: emailController,
+                      controller: emailRegisterController,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
@@ -93,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return null;
                       },
                       keyboardType: TextInputType.visiblePassword,
-                      controller: password,
+                      controller: passwordRegisterController,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
                         //icon: Icon(Icons.lock),

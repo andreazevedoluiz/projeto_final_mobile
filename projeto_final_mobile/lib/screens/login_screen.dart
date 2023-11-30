@@ -9,7 +9,7 @@ class LoginScreen extends StatefulWidget {
 
 class _MyWidgetState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
-  TextEditingController password = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   bool valueValidator(String? value) {
     if (value != null && value.isEmpty) {
       return true;
@@ -73,7 +73,7 @@ class _MyWidgetState extends State<LoginScreen> {
                         return null;
                       },
                       keyboardType: TextInputType.visiblePassword,
-                      controller: password,
+                      controller: passwordController,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
                         icon: Icon(Icons.lock),
