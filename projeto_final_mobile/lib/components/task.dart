@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:projeto_final_mobile/components/difficulty.dart';
 import 'package:projeto_final_mobile/data/task_dao.dart';
@@ -15,6 +14,7 @@ class Task extends StatefulWidget {
   State<Task> createState() => _TaskState();
 }
 
+
 class _TaskState extends State<Task> {
   bool assetOrNetwork() {
     if (widget.foto.contains('http')) {
@@ -22,6 +22,7 @@ class _TaskState extends State<Task> {
     }
     return true;
   }
+  bool checkValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -86,58 +87,32 @@ class _TaskState extends State<Task> {
                         )
                       ],
                     ),
-                    SizedBox(
-                      height: 52,
-                      width: 52,
-                      child: ElevatedButton(
-                          onLongPress: () {
-                            TaskDao().delete(widget.nome);
-                          },
-                          onPressed: () {
-                            setState(() {
-                              widget.nivel++;
-                            });
-                          },
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Icon(Icons.arrow_drop_up),
-                              Text(
-                                'UP',
-                                style: TextStyle(
-                                    fontSize: 10,
-                                    textBaseline: TextBaseline.alphabetic),
-                              ),
-                            ],
-                          )),
+                    Row(
+                      children: [
+                        Checkbox(
+                            value: checkValue,
+                            onChanged: (checked) {
+                              print(checked);
+                              setState(() {
+                                checkValue = !checkValue;
+                              });
+                            }),
+                        Text('Concluído'),
+                      ],
                     ),
                   ],
                 ),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: SizedBox(
-                      width: 200,
-                      child: LinearProgressIndicator(
-                        color: Colors.white,
-                        value: (widget.dificuldade > 0)
-                            ? (widget.nivel / widget.dificuldade) / 10
-                            : 1,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Text(
-                      'Nivel ${widget.nivel}',
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                  ),
-                ],
+                  IconButton(
+                      icon: Icon(Icons.delete),
+                      color: Colors.red,
+                      onPressed: () {
+                        TaskDao().delete(widget.nome);
+                      })
+                ], 
               ),
             ],
           ),
