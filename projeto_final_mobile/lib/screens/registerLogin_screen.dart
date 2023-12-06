@@ -11,8 +11,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController nameRegisterController = TextEditingController();
   TextEditingController emailRegisterController = TextEditingController();
   TextEditingController passwordRegisterController = TextEditingController();
-    bool _showPassaword = false;
-
+  bool _showPassaword = false;
 
   bool valueValidator(String? value) {
     if (value != null && value.isEmpty) {
@@ -21,32 +20,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return false;
   }
 
+  final _registerKey = GlobalKey<FormState>();
+
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text(
-          'Cadastro de Usuário',
-          style: TextStyle(color: Colors.white),
+    return Form(
+      key: _registerKey,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: const Text(
+            'Cadastro de Usuário',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            height: 580,
-            width: 390,
-            decoration: BoxDecoration(
-              color: Colors.white10,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  onChanged: (text){
-                        setState(() {
-                        });
-                      } ,
+        body: Center(
+          child: SingleChildScrollView(
+            child: Container(
+              height: 580,
+              width: 390,
+              decoration: BoxDecoration(
+                color: Colors.white10,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      onChanged: (text) {
+                        setState(() {});
+                      },
                       validator: (String? value) {
                         if (valueValidator(value)) {
                           return 'Insira o nome!';
@@ -61,13 +64,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           hintText: 'Nome',
                           fillColor: Colors.white70,
                           filled: true),
-                ),),
-                Padding(padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  onChanged: (text){
-                        setState(() {
-                        });
-                      } ,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      onChanged: (text) {
+                        setState(() {});
+                      },
                       validator: (String? value) {
                         if (valueValidator(value)) {
                           return 'Insira o e-mail!';
@@ -82,8 +86,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           hintText: 'e-mail',
                           fillColor: Colors.white70,
                           filled: true),
-                ),),
-                Padding(
+                    ),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       validator: (String? value) {
@@ -116,15 +121,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       obscureText: _showPassaword == false ? true : false,
                     ),
                   ),
-                   Column(
+                  Column(
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (_registerKey.currentState!.validate()) {
+                            print(nameRegisterController);
+                          }
+                        },
                         child: Text('Cadastrar'),
                       ),
-                      ],
-                      ),       
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

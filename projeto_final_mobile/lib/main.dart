@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: TaskInherited(child: const InitialScreen()),
+      home: RegisterScreen() //TaskInherited(child: const InitialScreen()),
     );
   }
 }
