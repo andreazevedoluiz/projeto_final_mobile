@@ -127,6 +127,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onPressed: () {
                           if (_registerKey.currentState!.validate()) {
                             print(nameRegisterController);
+                            Navigator.pop(context);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Criando Novo Perfil'),
+                              ),
+                            );
                           }
                         },
                         child: Text('Cadastrar'),
