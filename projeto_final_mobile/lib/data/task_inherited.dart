@@ -9,10 +9,10 @@ class TaskInherited extends InheritedWidget {
   }) : super(key: key, child: child);
 
   final List<Task> taskList = [
-    Task('Aprender Flutter', 'assets/images/mascote.png', 3),
+    /*Task('Aprender Flutter', 'assets/images/mascote.png', 3),
     Task('Andar de Bike', 'assets/images/bike.jpg', 2),
     Task('Meditar', 'assets/images/meditacao.jpeg', 5),
-    Task('Ler', 'assets/images/ler.jpg', 4),
+    Task('Ler', 'assets/images/ler.jpg', 4),*/
   ];
 
   void newTask(String name, String photo,int difficulty){
@@ -22,7 +22,7 @@ class TaskInherited extends InheritedWidget {
   static TaskInherited of(BuildContext context) {
     final TaskInherited? result =
         context.dependOnInheritedWidgetOfExactType<TaskInherited>();
-    assert(result != null, 'No TaskInherited found in context');
+   assert(result != null, 'No TaskInherited found in context');
     return result!;
   }
 
